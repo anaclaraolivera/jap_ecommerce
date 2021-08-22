@@ -1,24 +1,19 @@
 var currentProductsArray = [];
 
-
-
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
-            console.log(resultObj.data);
             currentProductsArray = resultObj.data;
             showProductoList();
-            // sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
 });
 
-
+// Función que sirve para mostrar los productos en pantalla
 function showProductoList() {
-
     let htmlContentToAppend = "";
     for (let i = 0; i < currentProductsArray.length; i++) {
         let product = currentProductsArray[i];
@@ -40,6 +35,5 @@ function showProductoList() {
             </a>
             `
     }
-
     document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
 }

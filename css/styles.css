@@ -140,13 +140,13 @@ a.custom-card:hover {
   color: orange;
 }
 
-/* INDEX LOGIN */
+/* INDEX NUEVO (LOGIN) */
 
 @use postcss-preset-env {
   stage: 0;
 }
 
-/* ---------- GENERAL ---------- */
+/* GENERAL  */
 * {
   box-sizing: inherit;
 }
@@ -183,13 +183,13 @@ svg {
   vertical-align: middle;
 }
 
-/* ---------- ALIGN ---------- */
+/* ALIGN */
 .align {
   display: grid;
   place-items: center;
 }
 
-/* ---------- BUTTON ---------- */
+/* BUTTON */
 
 .button {
   background-color: #33cc77;
@@ -202,7 +202,7 @@ svg {
   background-color: #28ad63;
 }
 
-/* ---------- ICONS ---------- */
+/* ICONS */
 .icons {
   display: none;
 }
@@ -214,7 +214,7 @@ svg {
   width: 1em;
 }
 
-/* ---------- LOGIN ---------- */
+/* LOGIN  */
 .login {
   width: 400px;
 }
