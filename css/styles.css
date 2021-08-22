@@ -141,6 +141,7 @@ a.custom-card:hover {
 }
 
 /* INDEX NUEVO (LOGIN) */
+/* link de donde fue extraido:  https://codepen.io/marcobiedermann/pen/qahmr/ */
 
 @use postcss-preset-env {
   stage: 0;
