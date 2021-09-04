@@ -10,17 +10,7 @@ let PERCENTAGE_SYMBOL = '%';
 let SUCCESS_MSG = "¡Se ha realizado la publicación con éxito! :)";
 let ERROR_MSG = "Ha habido un error :(, verifica qué pasó.";
 
-function obteneryMostrarUsuario() {
-    let string = 'Hola, ';
-    let usuarioValue = localStorage.getItem('usuario');
-    if (usuarioValue == null) {
-      usuarioValue = "extraño"
-    }
-    string += usuarioValue;
-    let nombreUsuario = document.getElementById('username');
-    nombreUsuario.innerHTML += string;
-  }
-  
+
 
 //Función que se utiliza para actualizar los costos de publicación
 function updateTotalCosts(){
@@ -41,8 +31,8 @@ function updateTotalCosts(){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-    obteneryMostrarUsuario()
     
+
     document.getElementById("productCountInput").addEventListener("change", function(){
         productCount = this.value;
         updateTotalCosts();
