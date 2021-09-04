@@ -6,7 +6,17 @@ var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
 
-
+function obteneryMostrarUsuario() {
+    let string = 'Hola, ';
+    let usuarioValue = localStorage.getItem('usuario');
+    if (usuarioValue == null) {
+      usuarioValue = "extraño"
+    }
+    string += usuarioValue;
+    let nombreUsuario = document.getElementById('username');
+    nombreUsuario.innerHTML += string;
+  }
+  
 //Clasificar los productos en función de criteria y de array
 function sortProducts(criteria, array) {
     //Se crea una variable que es un array vacío donde se cargará lo que se ordene
@@ -98,6 +108,8 @@ function sortAndShowProducts(sortCriteria, productsArray) {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
+    obteneryMostrarUsuario()
+    
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             sortAndShowProducts(ORDER_ASC_BY_PRICE, resultObj.data);
