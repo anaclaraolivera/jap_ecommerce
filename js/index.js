@@ -29,7 +29,7 @@ function guardarUsuario(){
         window.location.href="afterIndex.html";
     }
     else{
-        alert("debe completar los campos");
+        alert("Debe completar los campos");
     }
 
 }
