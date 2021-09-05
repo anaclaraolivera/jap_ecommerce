@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,6 +14,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
 </head>
+
 <body>
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
@@ -25,33 +27,32 @@
       <span style="color: white;" class="py-2 d-none d-md-inline-block" id="username"></span>
     </div>
   </nav>
-  
+
   <!--Container productos-->
-  <div class="container p-5">
-    <main role="main" class="pb-5">
-      <div class="text-center p-4">
-        <h2>Productos</h2>
-        <p class="lead">Productos del sitio</p>
-      </div>
-      <!--Container botones -->
-  <div class="container">
-    <div class="row">
-        <div class="col text-right">
-            <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-                <label class="btn btn-light active" id="sortAsc" >
-                    <input type="radio" name="options" autocomplete="off" checked>Mayor Precio
-                </label>
-                <label class="btn btn-light" id="sortDesc" >
-                    <input type="radio" name="options" autocomplete="off">Menor Precio
-                </label>
-                <label class="btn btn-light" id="sortBySold" >
-                    <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Cant.
-                </label>
-            </div>
-        </div>
+  <main role="main" class="pb-5">
+    <div class="text-center p-4">
+      <h2>Productos</h2>
+      <p class="lead">Productos del sitio</p>
     </div>
-    <div class="row justify-content-end">
-      <div class="col-md-6"></div>
+    <!--Container botones -->
+    <div class="container">
+      <div class="row">
+        <div class="col text-right">
+          <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+            <label class="btn btn-light active" id="sortAsc">
+              <input type="radio" name="options" autocomplete="off" checked>Mayor Precio
+            </label>
+            <label class="btn btn-light" id="sortDesc">
+              <input type="radio" name="options" autocomplete="off">Menor Precio
+            </label>
+            <label class="btn btn-light" id="sortBySold">
+              <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Cant.
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-end">
+        <div class="col-md-6"></div>
         <div class="col-md-6 col-sm-12 mb-1 container">
           <div class="row container p-0 m-0">
             <div class="col">
@@ -71,22 +72,13 @@
             </div>
           </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="list-group" id="cat-list-container">
-        </div>
-    </div>
-</div>
-      <div class= "container">
-        <div class="row">
-          <!-- div en el que se cargan los datos desde el js-->
-          <div class="list-group" id="prod-list-container">
-          </div>
+      </div>
+      <div class="row">
+        <div class="list-group" id="prod-list-container">
         </div>
       </div>
-    </main>
-  </div>
-  
+    </div>
+  </main>
   <footer class="text-muted bg-light">
     <div class="container">
       <p class="float-right">
