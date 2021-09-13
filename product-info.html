@@ -27,16 +27,18 @@
       <span style="color: white;" class="py-2 d-none d-md-inline-block" id="username"></span>
     </div>
   </nav>
-  
+
   <main role="main">
     <div class="container mt-5">
       <div class="text-center p-4">
         <h2>Descripción del producto</h2>
         <p class="lead">Encontrarás aquí toda la información de este producto</p>
-        <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquier sea el producto seleccionado previamente, siempre se visualizará la presente: <strong>Autos</strong>.</p>
+        <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquier sea el producto
+          seleccionado previamente, siempre se visualizará la presente: <strong>Autos</strong>.</p>
       </div>
       <h3 id="productName"></h3>
       <hr class="my-3">
+      <!--Lo que viene del json-->
       <dl>
         <dt>Descripción</dt>
         <dd>
@@ -69,6 +71,14 @@
           </div>
         </dd>
       </dl>
+
+      <!---Comentarios-->
+      <h3>Sección de comentarios</h3>
+       <hr class="my-3">
+        <div class="card-group" id= "container-comentarios">
+        </div>
+   <!--Esto queda re feo, pero quería que quedara un espacio jeje-->
+<br>
       <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
     </div>
   </main>
@@ -93,7 +103,12 @@
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
+  <!--Tuve que cambiarlos de lugar-->
+  <script src="js/comentarios-productos.js"> </script>
   <script src="js/product-info.js"></script>
+ 
 </body>
 
 </html>
+
+

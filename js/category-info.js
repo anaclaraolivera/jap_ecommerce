@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         {
             category = resultObj.data;
 
-            let categoryNameHTML  = document.getElementById("categoryName");
+            let categoryNameHTML = document.getElementById("categoryName");
             let categoryDescriptionHTML = document.getElementById("categoryDescription");
             let productCountHTML = document.getElementById("productCount");
             let productCriteriaHTML = document.getElementById("productCriteria");
