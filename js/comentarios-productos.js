@@ -13,12 +13,8 @@ function mostrarComentarios(lista){
         `
       <div class= "card">
            <div class="card-body">
-           <div>     
-           <h5 class="card-title">Usuario: `+ comentario.user + `</h5>
-           </div>
-           <div>
+                <h5 class="card-title">Usuario: `+ comentario.user + `</h5>
                 <p class="card-text">`+ comentario.description + `</p>
-                </div>
                 <div class="card-body text-success">
                 <p class="card-text">Puntaje: `+ comentario.score +`/5 </p>
                 </div>
