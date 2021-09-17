@@ -1,6 +1,25 @@
 var product = {};
 var comentarios = {};
 
+// function mostrarImagenes(array) {
+
+//     let htmlContentToAppend = "";
+
+//     for (let i = 0; i < array.length; i++) {
+//         let imageSrc = array[i];
+
+//         htmlContentToAppend += `
+//         <div class="col-lg-3 col-md-4 col-6">
+//             <div class="d-block mb-4 h-100">
+//                 <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
+//             </div>
+//         </div>
+//         `
+
+//         document.getElementById("ImagenesProducto").innerHTML = htmlContentToAppend;
+//     }
+// }
+
 function mostrarImagenes(array) {
 
     let htmlContentToAppend = "";
@@ -9,10 +28,8 @@ function mostrarImagenes(array) {
         let imageSrc = array[i];
 
         htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-            </div>
+        <div class="carousel-item">
+                <img class="d-block w-100" src="` + imageSrc + `" alt="imagen ilustrativa">
         </div>
         `
 

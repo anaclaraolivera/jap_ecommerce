@@ -69,18 +69,37 @@
 
         <dt>Imágenes ilustrativas</dt>
         <dd>
-          <div class="row text-center text-lg-left pt-2" id="ImagenesProducto">
+          <!--Bootstrap-->
+          <!--Me gustaría poder centrar el carrusel-->
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style= "height: 80%;
+          width: 50%; ">
+            <div class="carousel-inner">
+              <div>
+                <img class= "carousel-item active" src="img/car1.jpg" class="d-block w-100" alt="">
+                <div id="ImagenesProducto">
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
           </div>
+          <!-- <div class="row text-center text-lg-left pt-2" id="ImagenesProducto">
+          </div> -->
         </dd>
       </dl>
 
       <!---Comentarios-->
       <h3>Sección de comentarios</h3>
-       <hr class="my-3">
-        <div class="card-group" id= "container-comentarios">
-        </div>
-   <!--Esto queda re feo, pero quería que quedara un espacio jeje-->
-<br>
+      <hr class="my-3">
+      <div class="card-group" id="container-comentarios" style="margin-bottom: 30px;">
+      </div>
+
       <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
     </div>
   </main>
@@ -108,9 +127,7 @@
   <!--Tuve que cambiarlos de lugar-->
   <script src="js/comentarios-productos.js"> </script>
   <script src="js/product-info.js"></script>
- 
+
 </body>
 
 </html>
-
-
