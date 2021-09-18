@@ -96,9 +96,30 @@
 
       <!---Comentarios-->
       <h3>Sección de comentarios</h3>
-      <hr class="my-3">
-      <div class="card-group" id="container-comentarios" style="margin-bottom: 30px;">
-      </div>
+      <div class="container"  >
+        <div id="comentarios" style="margin-bottom: 50px;"></div>
+
+        <form id="formulario">
+            <div class="form-group">
+              <label for="textarea">¡Dejanos tu opinión!</label>
+              <!--ícono-->
+              <i class="fas fa-comment-dots"></i>
+                <textarea class="form-control" id="descripcion-comentario" rows="5"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="score">Seleccione un puntaje del 1-5</label>
+                <select class="form-control" id="puntaje">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary mb-2" onclick="saveComment()">Enviar</button>
+        </form>
+
 
       <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
     </div>
