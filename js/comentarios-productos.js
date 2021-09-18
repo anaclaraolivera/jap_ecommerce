@@ -1,5 +1,5 @@
 var comentarios = [];
-
+//falta la hora
 function saveComment() {
     let date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
     let options = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' };
@@ -92,11 +92,13 @@ function showComment() {
     for (let i = comentarios.length - 1; i >= 0; i--) {
         let comentario = comentarios[i];
         html += ` 
-        <div class= "card">
+        <div class= "card deck mt-4" >
          <div class="card-body">
-                    <h5 class="card-title"> Usuario:  ${comentario.user} - ${estrellas(comentario.score)} </h5>
+                    <h5 class="card-title"> <i class='far fa-user-circle' style='font-size:24px'></i> ${comentario.user}</h5>
                     <p class="card-text">${comentario.description}</p>
-                    <p class="card-text">${comentario.completeDate}</p>
+                    <p class="card-text"> ${estrellas(comentario.score)}</p>
+                    <h6 class="card-subtitle mb-2 text-muted">${comentario.completeDate}</h6>
+                    
              </div>      
         </div>`
 
