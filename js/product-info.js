@@ -1,5 +1,5 @@
-var product = {};
-// var comentarios = {};
+let product = {};
+
 
 function mostrarImagenes(array) {
 
