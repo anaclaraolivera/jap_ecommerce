@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             productSoldCountHTML.innerHTML = product.soldCount;
             productCategoryHTML.innerHTML = product.category;
 
-            //Muestro las imagenes en forma de galería
+            //Muestro las imágenes 
             mostrarImagenes(product.images);
         }
 

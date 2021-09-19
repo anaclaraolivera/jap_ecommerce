@@ -18,7 +18,6 @@ function saveComment() {
         }
         // a la lista del json se le pushean los comentarios nuevos
         comentarios.push(comentario);
-        console.log("comentarios después de que se guarda un comentario" + comentarios)
         // se recarga la lista y se muestra el nuevo comentario 
         showComment();
     }
@@ -65,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultado) {
         if (resultado.status === "ok") {
             comentarios = resultado.data;
-            console.log("comentarios cuando se carga la página" + comentarios)
             // muestra los comentarios
             showComment(comentarios);
         }
