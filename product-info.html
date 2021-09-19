@@ -41,98 +41,91 @@
       <h3 id="productName"></h3>
       <hr class="my-3">
       <!--Lo que viene del json-->
-      <dl>
-        <dt>Descripción</dt>
-        <dd>
-          <p id="productDescription"></p>
-        </dd>
-
-        <dt>Cantidad disponible</dt>
-        <dd>
-          <p id="productCost"></p>
-        </dd>
-
-        <dt>Moneda</dt>
-        <dd>
-          <p id="productCurrency"></p>
-        </dd>
-
-        <dt>Cantidad de vendidos</dt>
-        <dd>
-          <p id="productSoldCount"></p>
-        </dd>
-
-        <dt>Categoría</dt>
-        <dd>
-          <p id="productCategory"></p>
-        </dd>
-
-        <dt>Imágenes ilustrativas</dt>
-        <dd>
-          <!--Bootstrap-->
-          <!--Me gustaría poder centrar el carrusel-->
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style= "height: 80%;
-          width: 50%; ">
-            <div class="carousel-inner">
-              <div>
-                <img class= "carousel-item active" src="img/car1.jpg" class="d-block w-100" alt="">
-                <div id="ImagenesProducto">
+      <div>
+        <dl>
+          <dt>Descripción</dt>
+          <dd>
+            <p id="productDescription"></p>
+          </dd>
+  
+          <dt>Cantidad disponible</dt>
+          <dd>
+            <p id="productCost"></p>
+          </dd>
+  
+          <dt>Moneda</dt>
+          <dd>
+            <p id="productCurrency"></p>
+          </dd>
+  
+          <dt>Cantidad de vendidos</dt>
+          <dd>
+            <p id="productSoldCount"></p>
+          </dd>
+  
+          <dt>Categoría</dt>
+          <dd>
+            <p id="productCategory"></p>
+          </dd>
+  
+          <dt>Imágenes ilustrativas</dt>
+          <dd>
+            <!--Bootstrap-->
+            <!--Me gustaría poder centrar el carrusel-->
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="height: 80%;
+            width: 50%; margin-left: 25%;" >
+              <div class="carousel-inner">
+                <div>
+                  <img class="carousel-item active" src="img/car1.jpg" class="d-block w-100" alt="">
+                  <div id="ImagenesProducto">
+                  </div>
                 </div>
               </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-          <!-- <div class="row text-center text-lg-left pt-2" id="ImagenesProducto">
-          </div> -->
-        </dd>
-      </dl>
+            <!-- <div class="row text-center text-lg-left pt-2" id="ImagenesProducto">
+            </div> -->
+          </dd>
+        </dl>
+      </div>
+      
 
       <!---Comentarios-->
       <h3>Sección de comentarios</h3>
-      <div class="container"  >
-        <div  class="card bg-dark mb-3" id="comentarios" style="margin-bottom: 50px;"></div>
+      <div class="container">
+        <div class="card bg-dark mb-3" id="comentarios" style="margin-bottom: 50px;"></div>
 
         <form id="formulario">
-            <div class="form-group">
-              <label for="textarea">¡Dejanos tu opinión!</label>
-              <!--ícono-->
-              <i class="fas fa-comment-dots"></i>
-                <textarea class="form-control" id="descripcion-comentario" rows="5"></textarea>
-            </div>
-            <!--Quiero usar este código-->
-            <!-- <div class="dropdown">
-              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Selecciona una opción
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Opción 1</a>
-                <a class="dropdown-item" href="#">Opción 2</a>
-                <a class="dropdown-item" href="#">Opción 3</a>
-              </div>
-            </div> -->
-            <div class="form-group">
-                <label for="score">Seleccione un puntaje del 1-5</label>
-                <select class="form-control" id="puntaje" required>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-            <button type="button" class="btn btn-primary mb-2" onclick="saveComment()">Enviar</button>
+          <div class="dropdown">
+            <label for="textarea">¡Dejanos tu opinión!</label>
+            <!--ícono-->
+            <i class="fas fa-comment-dots"></i>
+            <textarea class="form-control" id="descripcion-comentario" rows="5" placeholder="Ingrese aquí su comentario"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="score">Seleccione un puntaje del 1-5</label>
+            <select class="form-control" id="puntaje">
+              <option disabled selected>Seleccione un número</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-primary mb-2" onclick="saveComment()">Enviar</button>
         </form>
 
 
-      <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
-    </div>
+        <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
+      </div>
   </main>
 
   <footer class="text-muted">
