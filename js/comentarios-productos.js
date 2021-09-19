@@ -18,7 +18,7 @@ function saveComment() {
         }
         // a la lista del json se le pushean los comentarios nuevos
         comentarios.push(comentario);
-        // se recarga la lista y se muestra el nuevo comentario 
+        // se recarga la lista y se muestran todos los comentarios
         showComment();
     }
 }
@@ -56,7 +56,7 @@ function showComment() {
     }
 
     document.getElementById("comentarios").innerHTML = html;
-    document.getElementById("formulario").reset();
+    document.getElementById("formulario").reset(); 
 }
 
 
