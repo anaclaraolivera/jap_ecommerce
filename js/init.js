@@ -51,6 +51,10 @@ function obteneryMostrarUsuario() {
   let nombreUsuario = document.getElementById('username');
   nombreUsuario.innerHTML += string;
 }
+//Limpia el localStorage
+function cerrarSesion() {
+  localStorage.clear();
+}
 
 
 

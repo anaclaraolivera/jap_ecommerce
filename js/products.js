@@ -92,6 +92,10 @@ function sortAndShowProducts(sortCriteria, productsArray) {
     showProductsList();
 }
 
+function buscarProductos() {
+
+}
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -146,6 +150,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
         //Muestra los productos según el rango que se haya definido en minCount y maxCount
         showProductsList();
+    });
+
+    let busquedaProductos = document.getElementById("búsqueda-productos")
+    busquedaProductos.addEventListener("keyup", function () {
+        busquedaProductos.value = " ";
+        
     });
 });
 
