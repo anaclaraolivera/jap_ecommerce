@@ -1,5 +1,7 @@
 let product = {};
 let otherProducts = [];
+let relatedProducts = [];
+
 
 
 function mostrarImagenes(array) {
@@ -21,29 +23,30 @@ function mostrarImagenes(array) {
 
 
 
-// function mostrarRelatedProducts(lista) {
+function mostrarRelatedProducts() {
 
-//     let contenidoHTML = "";
+    let contenidoHTML = "";
 
-//     for (let i = 0; i < lista.length; i++) {
-//         let eachProduct = lista[i];
-//         contenidoHTML += `
+    for (let i = 0; i < relatedProducts.length; i++) {
+        
+        let eachProduct = otherProducts[relatedProducts[i]];
+        contenidoHTML += `
        
-//     <div class="card">
-//      <img src=" `+ eachProduct.imageSrc + `" class="card-img-top" alt="Imagen">
-//         <div class="card-body">
-//           <h3 class="card-title">`+ eachProduct.cost + `</h3>
-//           <h5 class="card-text">`+ eachProduct.name + `</h5>
-//           <h6 class="card-text">`+ eachProduct.description + `</h6>
-//           <p class="card-text"><small class="text-muted">`+ eachProduct.soldCount + `</small></p>
-//         </div>
-//     </div>
+    <div class="card">
+     <img src=" `+ eachProduct.imgSrc + `" class="card-img-top" alt="Imagen">
+        <div class="card-body">
+          <h3 class="card-title"> $ `+ eachProduct.cost + `</h3>
+          <h5 class="card-text">`+ eachProduct.name + `</h5>
+          <h6 class="card-text">`+ eachProduct.description + `</h6>
+          <p class="card-text"><small class="text-muted">`+ eachProduct.soldCount + `</small></p>
+        </div>
+    </div>
     
-//         `
-//         document.getElementById("related-products").innerHTML = contenidoHTML;
-//         console.log ("aquí:" + contenidoHTML)
-//     }
-// }
+        `
+        document.getElementById("related-products").innerHTML = contenidoHTML;
+        console.log ("aquí:" + contenidoHTML)
+    }
+}
 
 
 
@@ -61,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             let productCurrencyHTML = document.getElementById("productCurrency");
             let productSoldCountHTML = document.getElementById("productSoldCount");
             let productCategoryHTML = document.getElementById("productCategory");
+            relatedProducts = product.relatedProducts;
 
             productNameHTML.innerHTML = product.name;
             productDescriptionHTML.innerHTML = product.description;
@@ -76,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
     getJSONData(PRODUCTS_URL).then(function (result) {
         if (result.status === "ok") {
-            otherProducts = result;
+            otherProducts = result.data;
         }
         mostrarRelatedProducts(otherProducts);
     });
