@@ -40,9 +40,17 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <!-- Usuario -->
-      <span style="color: white;" class="py-2 d-none d-md-inline-block" id="username"></span>
+      
+       <!-- Usuario -->
+       <div class="dropdown">
+        <button class="dropbtn" id= "username"></button>
+        <div class="dropdown-content">
+          <a href="cart.html">Ver mi carrito</a>
+          <a href="#">Mi perfil</a>
+          <!--¿Así está bien para cerrar sesión?-->
+          <a href="index.html" onclick="cerrarSesion()">Cerrar sesión</a>
+        </div>
+      </div>
     </div>
   </nav>
   <div class="container p-5">
