@@ -78,11 +78,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
 
     });
-    getJSONData(PRODUCTS_URL).then(function (result) {
-        if (result.status === "ok") {
-            otherProducts = result.data;
-        }
-        mostrarRelatedProducts(otherProducts);
-    });
-
+           getJSONData(PRODUCTS_URL).then(function (result) {
+              if (result.status === "ok") {
+                  otherProducts = result.data;
+                }
+              mostrarRelatedProducts(otherProducts);
+            });
 });
