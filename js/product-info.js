@@ -22,11 +22,12 @@ function mostrarImagenes(array) {
 }
 
 
-
+//Función que muestra los productos relacionados 
 function mostrarRelatedProducts() {
 
     let contenidoHTML = "";
-
+    //Se itera sobre el largo de "relatedProducts"
+    //Es un índice que indica cuál de los productos de "otherProducts" llamar para mostrarlo en html
     for (let i = 0; i < relatedProducts.length; i++) {
         
         let eachProduct = otherProducts[relatedProducts[i]];
@@ -38,13 +39,13 @@ function mostrarRelatedProducts() {
           <h3 class="card-title"> $ `+ eachProduct.cost + `</h3>
           <h5 class="card-text">`+ eachProduct.name + `</h5>
           <h6 class="card-text">`+ eachProduct.description + `</h6>
-          <p class="card-text"><small class="text-muted">`+ eachProduct.soldCount + `</small></p>
+          <p class="card-text"><small class="text-muted"> Cantidad disponible: `+ eachProduct.soldCount + `</small></p>
         </div>
     </div>
     
         `
         document.getElementById("related-products").innerHTML = contenidoHTML;
-        console.log ("aquí:" + contenidoHTML)
+      
     }
 }
 
@@ -78,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
 
     });
+        //Se hace otra petición para obtener el array de los productos 
            getJSONData(PRODUCTS_URL).then(function (result) {
               if (result.status === "ok") {
                   otherProducts = result.data;
