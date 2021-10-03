@@ -53,7 +53,8 @@ function obteneryMostrarUsuario() {
 }
 //Limpia el localStorage
 function cerrarSesion() {
-  localStorage.clear();
+  localStorage.removeItem('usuario');
+  location.href="index.html"
 }
 
 
