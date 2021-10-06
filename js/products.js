@@ -58,6 +58,7 @@ function showProductsList() {
         //productos comprendidos en ese rango
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount)) &&
+           //Se agrega otro filtro por string 
             (stringBusqueda == undefined) || ((nombreProductos.includes(stringBusqueda)) || (descripcionProductos.includes(stringBusqueda)))
         ) {
             //construye el html
