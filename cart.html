@@ -12,6 +12,8 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
+  <link href="css/styles.css" rel="stylesheet">
+
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -27,6 +29,22 @@
         font-size: 3.5rem;
       }
     }
+
+    .center-table {
+      margin-left: auto;
+      margin-right: auto;
+      width: 60%;
+    }
+
+    .espacio-columnas>td {
+      padding-bottom: 1em;
+      padding-left: 2em;
+      padding-right: 2em;
+    }
+
+    .alineado {
+      text-align: center
+    }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -40,10 +58,10 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      
-       <!-- Usuario -->
-       <div class="dropdown">
-        <button class="dropbtn" id= "username"></button>
+
+      <!-- Usuario -->
+      <div class="dropdown">
+        <button class="dropbtn" id="username"></button>
         <div class="dropdown-content">
           <a href="cart.html">Ver mi carrito</a>
           <a href="#">Mi perfil</a>
@@ -53,28 +71,53 @@
       </div>
     </div>
   </nav>
-  
-    <div class="text-center p-4">
-      <h2>Mi carrito</h2>
-      <p class="lead"></p>
+
+  <div class="text-center p-4">
+    <h2>Mi carrito</h2>
+    <p class="lead"></p>
   </div>
-  
- <div class="table-responsive">
-  <table class="table table-hover">
-    <thead>
-      <tr> 
-        <th scope="col">Producto</th>
-        <th scope="col"></th>
-        <th scope="col">Moneda</th>
-        <th scope="col">Costo</th>
-        <th scope="col">Cantidad</th>
-        <th scope="col">Subtotal</th>
-      </tr>
-    </thead>
-    <tbody id="carrito-tabla">
-    </tbody>
-  </table>
- </div>
+
+  <div class="table-responsive">
+    <h3 style="text-align: center">Artículos a comprar</h3>
+    <table  class="center-table" class="table table-hover">
+      <thead>
+        <tr>
+          <th class="alineado" scope="col">Producto</th>
+          <th class="alineado" scope="col"></th>
+          <th class="alineado" scope="col">Moneda</th>
+          <th class="alineado" scope="col">Costo</th>
+          <th class="alineado" scope="col">Cantidad</th>
+          <th class="alineado" scope="col">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="carrito-tabla">
+      </tbody>
+      <tbody>
+        <tr class="espacio-columnas">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <th scope="col">Total a pagar
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary active" id="pesos">
+                <input type="radio" name="options" id="option1" autocomplete="off" checked> UYU
+              </label>
+              <label class="btn btn-secondary" id="dólares">
+                <input type="radio" name="options" id="option2" autocomplete="off"> USD
+              </label>
+            </div>
+          </th>
+
+          <td id="total-pago-pesos" style="display: none;"></td>
+          <td id="total-pago-dolares" style="display: none;"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+
+  </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
