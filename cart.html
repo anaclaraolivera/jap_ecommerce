@@ -34,6 +34,7 @@
       margin-left: auto;
       margin-right: auto;
       width: 60%;
+      border-style: groove;
     }
 
     .espacio-columnas>td {
@@ -44,6 +45,17 @@
 
     .alineado {
       text-align: center
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .text {
+      font-size: 20px;
+      padding-left: 20px;
     }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -72,14 +84,21 @@
     </div>
   </nav>
 
-  <div class="text-center p-4">
-    <h2>Mi carrito</h2>
-    <p class="lead"></p>
+
+  <div class="container">
+    <div class="image">
+      <img src="img/icono-carrito.png">
+    </div>
+    <div class="text">
+      <h1>Mi carrito</h1>
+    </div>
   </div>
 
+
+
   <div class="table-responsive">
-    <h3 style="text-align: center">Artículos a comprar</h3>
-    <table  class="center-table" class="table table-hover">
+    <h3 class="text" style="text-align: center">Artículos a comprar</h3>
+    <table class="center-table" class="table table-hover">
       <thead>
         <tr>
           <th class="alineado" scope="col">Producto</th>
