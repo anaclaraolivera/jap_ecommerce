@@ -30,11 +30,11 @@
       }
     }
 
-    .center-table {
+    .center-item {
       margin-left: auto;
       margin-right: auto;
       width: 60%;
-      border-style: groove;
+
     }
 
     .espacio-columnas>td {
@@ -56,6 +56,9 @@
     .text {
       font-size: 20px;
       padding-left: 20px;
+    }
+    .espacio-entre-divs {
+      margin-bottom: 50px;
     }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -96,10 +99,14 @@
 
 
 
-  <div class="table-responsive">
-    <h3 class="text" style="text-align: center">Artículos a comprar</h3>
-    <table class="center-table" class="table table-hover">
+  <div style="margin-bottom: 50px;" class="table-responsive">
+    <table class="table table-hover" style="margin-left: auto; margin-right: auto; width: 60%;">
       <thead>
+        <tr>
+          <th colspan="6">
+            <h3>Articulos a comprar</h3>
+          </th>
+        </tr>
         <tr>
           <th class="alineado" scope="col">Producto</th>
           <th class="alineado" scope="col"></th>
@@ -134,9 +141,28 @@
       </tbody>
     </table>
   </div>
-  <div>
+
+  <div class="center-item" style="margin-bottom: 50px;">
+    <h3 class="text">Tipo de envío</h3>
+    <select name="select">
+      <option disabled selected>Seleccione un tipo de envío</option>
+      <option>Premium 2 a 5 días (15%)</option>
+      <option>Express 5 a 8 días (7%)</option>
+      <option>Standard 12 a 15 días (5%)</option>
+    </select>
+  </div>
+
+  <div class="center-item" style="margin-bottom: 50px;">
+    <h3 class="text">Dirección de envío</h3>
+    <label>Calle</label>
+    <input type="text">
+    <label>Número</label>
+    <input type="text">
+    <label>Esquina</label>
+    <input type="text">
 
   </div>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
