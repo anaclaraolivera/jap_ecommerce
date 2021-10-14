@@ -99,9 +99,6 @@ function sortAndShowProducts(sortCriteria, productsArray) {
     showProductsList();
 }
 
-function buscarProductos() {
-
-}
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
