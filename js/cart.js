@@ -89,6 +89,7 @@ function selectCurrency(option) {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
+//Desafiate 5, el json tiene dos artículos 
   getJSONData(CART_2PROD_INFO).then(function (jsonCarrito) {
     if (jsonCarrito.status === "ok") {
       allArticles = jsonCarrito.data.articles;
