@@ -41,16 +41,49 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      <!-- Usuario -->
+      <div class="dropdown">
+        <button class="dropbtn" id="username"></button>
+        <div class="dropdown-content">
+          <a href="cart.html">Ver mi carrito</a>
+          <a href="my-profile.html">Mi perfil</a>
+          <!--Al hacer click se llama a la función que limpia el local storage y redirige al login-->
+          <a href="#" onclick="cerrarSesion()">Cerrar sesión</a>
+        </div>
+      </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container">
+    <div class="text">
+      <h1>Mi perfil</h1>
     </div>
   </div>
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="nombre-usuario">Nombre</label>
+        <input type="nombre" class="form-control" id="nombre-usuario" placeholder="Ingrese su nombre">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="apellidos-usuario">Apellidos</label>
+        <input type="apellidos" class="form-control" id="apellidos-usuario" placeholder="Ingrese sus apellidos">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="edad-usuario">Edad</label>
+      <input type="text" class="form-control" id="edad-usuario" placeholder="Ingrese su edad">
+    </div>
+    <div class="form-group">
+      <label for="correo-usuario">Correo electrónico</label>
+      <input type="text" class="form-control" id="correo-usuario" placeholder="Ingrese su correo electrónico">
+    </div>
+    <div class="form-group">
+      <label for="telefono-usuario">Teléfono de contacto</label>
+      <input type="text" class="form-control" id="telefono-usuario" placeholder="Ingrese su teléfono de contacto">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  </form>
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
