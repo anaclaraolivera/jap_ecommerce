@@ -63,27 +63,42 @@ function showProductsList() {
         ) {
             //construye el html
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">` + product.name + `</h4>
-                            <h3 class="mb-1">` + product.currency + ` ` + product.cost + `</h3>
-                            <small class="text-muted">` + product.soldCount + ` Artículos vendidos </small>
-                        </div>
+            <div class="col-md-4">
+            <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
+                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="bd-placeholder-img card-img-top">
+                            <h3 class="m-3">` + product.name + `</h3>
+                            <h4 class="m-3">` + product.currency + ` ` + product.cost + `</h4>
+                            <small class="text-muted m-3">` + product.soldCount + ` Artículos vendidos </small>
+                            <div class="card-body">
                         <p class="mb-1">` + product.description + `</p>
                     </div>
-                </div>
+                
             </a>
+        </div>
             `
         }
 
     }
     document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
 }
+
+
+
+// <a href="product-info.html" class="list-group-item list-group-item-action">
+// <div class="row">
+//     <div class="col-3">
+//         <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+//     </div>
+//     <div class="col">
+//         <div class="d-flex w-100 justify-content-between">
+//             <h4 class="mb-1">` + product.name + `</h4>
+//             <h3 class="mb-1">` + product.currency + ` ` + product.cost + `</h3>
+//             <small class="text-muted">` + product.soldCount + ` Artículos vendidos </small>
+//         </div>
+//         <p class="mb-1">` + product.description + `</p>
+//     </div>
+// </div>
+// </a>
 
 // función que ordena y muestra los productos
 function sortAndShowProducts(sortCriteria, productsArray) {
