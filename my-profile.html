@@ -27,6 +27,15 @@
         font-size: 3.5rem;
       }
     }
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+    .text {
+      font-size: 20px;
+      padding-left: 20px;
+    }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -59,11 +68,13 @@
     </div>
   </div>
   <!--Formulario para llenar datos-->
-  <form>
+  <div id="formulario-perfil" style="margin-bottom: 50px;">
+    <!--Con el onsubmit se llama a la función que guarda la info y crea el JSON-->
+  <form style="margin-left: auto; margin-right: auto; width: 60%;" onsubmit="guardarInfoUsuario()">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="nombre-usuario">Primer nombre</label>
-        <input type="nombre" class="form-control" id="primer-nombre-usuario" placeholder="Ingrese su primer nombre">
+        <input type="nombre" class="form-control" id="primer-nombre-usuario" placeholder="Ingrese su primer nombre" required>
       </div>
       <div class="form-group col-md-6">
         <label for="nombre-usuario">Segundo nombre</label>
@@ -71,7 +82,7 @@
       </div>
       <div class="form-group col-md-6">
         <label for="apellidos-usuario">Primer apellido</label>
-        <input type="apellidos" class="form-control" id="primer-apellido-usuario" placeholder="Ingrese su primer apellido">
+        <input type="apellidos" class="form-control" id="primer-apellido-usuario" placeholder="Ingrese su primer apellido" required>
       </div>
       <div class="form-group col-md-6">
         <label for="apellidos-usuario">Segundo apellido</label>
@@ -80,21 +91,22 @@
     </div>
     <div class="form-group">
       <label for="edad-usuario">Edad</label>
-      <input type="text" class="form-control" id="edad-usuario" placeholder="Ingrese su edad">
+      <input type="text" class="form-control" id="edad-usuario" placeholder="Ingrese su edad" required>
     </div>
     <div class="form-group">
       <label for="correo-usuario">Correo electrónico</label>
-      <input type="text" class="form-control" id="correo-usuario" placeholder="Ingrese su correo electrónico">
+      <input type="text" class="form-control" id="correo-usuario" placeholder="Ingrese su correo electrónico" required>
     </div>
     <div class="form-group">
       <label for="telefono-usuario">Teléfono de contacto</label>
-      <input type="text" class="form-control" id="telefono-usuario" placeholder="Ingrese su teléfono de contacto">
+      <input type="text" class="form-control" id="telefono-usuario" placeholder="Ingrese su teléfono de contacto" required>
     </div>
     
-    <button type="button" class="btn btn-primary" onclick="guardarInfoUsuario()">Guardar</button>
+    <button type="submit" class="btn btn-primary">Guardar</button>
   </form>
+</div>
   <!--Acá va la ficha del perfil-->
-  <div id= "insertar-perfil">
+  <div id= "tarjeta-perfil" style="display:none;" >
   </div>
   
   <footer class="text-muted bg-light">
