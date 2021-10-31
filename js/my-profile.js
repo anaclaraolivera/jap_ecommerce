@@ -60,7 +60,7 @@ function crearTarjPerfil() {
     let appendHTML = "";
 
 appendHTML = `<div class="card" style="margin-left: auto; margin-right: auto; width: 25%;">
-<img class="card-img-top" src="..." alt="Card image cap">
+<!--<img class="card-img-top" src="..." alt="Card image cap">-->
 <div class="card-body">
     <h5 class="card-title">${datosRegistro.nombre} ${datosRegistro.apellidos}</h5>
 </div>
