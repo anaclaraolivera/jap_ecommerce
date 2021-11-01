@@ -57,6 +57,7 @@
       font-size: 20px;
       padding-left: 20px;
     }
+
     .espacio-entre-divs {
       margin-bottom: 50px;
     }
@@ -99,7 +100,7 @@
   </div>
 
 
-<!--Tabla-->
+  <!--Tabla-->
   <div style="margin-bottom: 50px;" class="table-responsive">
     <table class="table table-hover" style="margin-left: auto; margin-right: auto; width: 60%;">
       <thead>
@@ -145,32 +146,32 @@
     </table>
   </div>
 
-<!--Tipo de envío-->
-  <div class= "center-item" style="margin-bottom: 50px;">
+  <!--Tipo de envío-->
+  <div class="center-item" style="margin-bottom: 50px;">
     <h3 class="mb-3">Tipo de envío</h3>
     <div class="custom-control custom-radio">
-      <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
+      <input id="goldradio" name="radio-envio" type="radio" class="custom-control-input" checked="" required="">
       <label class="custom-control-label" for="goldradio">Premium 2 a 5 días (15%)</label>
     </div>
     <div class="custom-control custom-radio">
-      <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
+      <input id="premiumradio" name="radio-envio" type="radio" class="custom-control-input" required="">
       <label class="custom-control-label" for="premiumradio">Express 5 a 8 días (7%)</label>
     </div>
     <div class="custom-control custom-radio">
-      <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
+      <input id="standardradio" name="radio-envio" type="radio" class="custom-control-input" required="">
       <label class="custom-control-label" for="standardradio">Standard 12 a 15 días (5%)</label>
     </div>
   </div>
 
 
-<!--Dirección-->
+  <!--Dirección-->
   <div class="center-item" style="margin-bottom: 50px;">
     <h3 class="mb-3">Dirección de envío</h3>
     <form class="needs-validation" id="">
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="productName">Dirección</label>
-          <input type="text" class="form-control" id="" placeholder="" value="" >
+          <input type="text" class="form-control" id="" placeholder="" value="">
           <div class="invalid-feedback">
             Ingrese una dirección
           </div>
@@ -181,7 +182,7 @@
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="productName">Número</label>
-            <input type="text" class="form-control" id="" placeholder="" value="" >
+            <input type="text" class="form-control" id="" placeholder="" value="">
             <div class="invalid-feedback">
               Ingrese el número de puerta
             </div>
@@ -192,20 +193,86 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="productName">Esquina</label>
-              <input type="text" class="form-control" id="" placeholder="" value="" >
+              <input type="text" class="form-control" id="" placeholder="" value="">
               <div class="invalid-feedback">
                 Ingrese la esquina
               </div>
             </div>
           </div>
-    
-    <!-- <label>Calle</label>
+
+          <!-- <label>Calle</label>
     <input type="text">
     <label>Número</label>
     <input type="text">
     <label>Esquina</label>
     <input type="text"> -->
 
+  </div>
+  <!--Falta los costos-->
+  <div class="center-item" style="margin-bottom: 50px;">
+    <h3 class="mb-3">Forma de pago</h3>
+    <!--Acá viene el modal-->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      Seleccionar forma de pago
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Forma de pago</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="radio-forma-pago" id="exampleRadios1" value="option1"
+                checked>
+              <label class="form-check-label" for="exampleRadios1">
+                Tarjeta de crédito
+              </label>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="productName">Número de tarjeta</label>
+                <input type="text" class="form-control" id="" placeholder="" value="">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="productName">Código de seguridad</label>
+                <input type="text" class="form-control" id="" placeholder="" value="">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="productName">Vencimiento (MM/AA)</label>
+                <input type="text" class="form-control" id="" placeholder="" value="">
+              </div>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="radio-forma-pago" id="exampleRadios2" value="option2">
+              <label class="form-check-label" for="exampleRadios2">
+                Transferencia bancaria
+              </label>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="productName">Número de cuenta</label>
+                <input type="text" class="form-control" id="" placeholder="" value="">
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 
   <div id="spinner-wrapper">
