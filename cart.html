@@ -102,7 +102,7 @@
 
   <!--Tabla-->
   <div style="margin-bottom: 50px;" class="table-responsive">
-    <table class="table table-hover" style="margin-left: auto; margin-right: auto; width: 60%;">
+    <table class="table" style="margin-left: auto; margin-right: auto; width: 60%;">
       <thead>
         <tr>
           <th colspan="6">
@@ -130,10 +130,10 @@
           <td></td>
           <th scope="col">Total a pagar
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-secondary active" id="pesos">
+              <label class="btn btn-outline-info" id="pesos">
                 <input type="radio" name="options" id="option1" autocomplete="off" checked> UYU
               </label>
-              <label class="btn btn-secondary" id="dólares">
+              <label class="btn btn-outline-info" id="dólares">
                 <input type="radio" name="options" id="option2" autocomplete="off"> USD
               </label>
             </div>
@@ -167,112 +167,136 @@
   <!--Dirección-->
   <div class="center-item" style="margin-bottom: 50px;">
     <h3 class="mb-3">Dirección de envío</h3>
-    <form class="needs-validation" id="">
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <label for="productName">Dirección</label>
-          <input type="text" class="form-control" id="" placeholder="" value="">
-          <div class="invalid-feedback">
-            Ingrese una dirección
-          </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="productName">Dirección</label>
+        <input type="text" class="form-control" id="" placeholder="" value="">
+        <div class="invalid-feedback">
+          Ingrese una dirección
         </div>
       </div>
-
-      <form class="needs-validation" id="">
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="productName">Número</label>
-            <input type="text" class="form-control" id="" placeholder="" value="">
-            <div class="invalid-feedback">
-              Ingrese el número de puerta
-            </div>
-          </div>
+      <div class="col-md-6 mb-3">
+        <label for="productName">Número</label>
+        <input type="text" class="form-control" id="" placeholder="" value="">
+        <div class="invalid-feedback">
+          Ingrese el número de puerta
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="productName">Esquina</label>
+        <input type="text" class="form-control" id="" placeholder="" value="">
+        <div class="invalid-feedback">
+          Ingrese la esquina
+        </div>
+      </div>
+    </div>
 
-        <form class="needs-validation" id="">
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="productName">Esquina</label>
-              <input type="text" class="form-control" id="" placeholder="" value="">
-              <div class="invalid-feedback">
-                Ingrese la esquina
-              </div>
-            </div>
-          </div>
-
-          <!-- <label>Calle</label>
+    <!-- <label>Calle</label>
     <input type="text">
     <label>Número</label>
     <input type="text">
     <label>Esquina</label>
     <input type="text"> -->
-
   </div>
-  <!--Falta los costos-->
+  <!--Costos-->
+  <!--Título-->
+  <div class="center-item" style="margin-bottom: 50px;">
+    <h3 class="mb-3">Costos</h3>
+    <!--Tabla con los costos-->
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td>Subtotal</td>
+          <td id="costo-subt"></td>
+        </tr>
+        <tr>
+          <td>Costo de envío</td>
+          <td id="costo-envio"></td>
+        </tr>
+        <tr>
+          <td>Total ($)</td>
+          <td id="costo-total"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!--Forma de pago-->
+  <!--Título-->
   <div class="center-item" style="margin-bottom: 50px;">
     <h3 class="mb-3">Forma de pago</h3>
-    <!--Acá viene el modal-->
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-      Seleccionar forma de pago
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle">Forma de pago</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio-forma-pago" id="exampleRadios1" value="option1"
-                checked>
-              <label class="form-check-label" for="exampleRadios1">
-                Tarjeta de crédito
-              </label>
-            </div>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="productName">Número de tarjeta</label>
-                <input type="text" class="form-control" id="" placeholder="" value="">
+    <!--Acá se muestra la forma de pago seleccionada-->
+    <div class="row justify-content-start">
+      <div class="col-4">
+        <!--Acá viene el modal-->
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModalCenter">
+          Seleccionar forma de pago
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Forma de pago</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="productName">Código de seguridad</label>
-                <input type="text" class="form-control" id="" placeholder="" value="">
+              <div class="modal-body">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="radio-forma-pago" id="exampleRadios1"
+                    value="option1" checked>
+                  <label class="form-check-label" for="exampleRadios1">
+                    Tarjeta de crédito
+                  </label>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="productName">Número de tarjeta</label>
+                    <input type="text" class="form-control" id="" placeholder="" value="">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="productName">Código de seguridad</label>
+                    <input type="text" class="form-control" id="" placeholder="" value="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="productName">Vencimiento (MM/AA)</label>
+                    <input type="text" class="form-control" id="" placeholder="" value="">
+                  </div>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="radio-forma-pago" id="exampleRadios2"
+                    value="option2">
+                  <label class="form-check-label" for="exampleRadios2">
+                    Transferencia bancaria
+                  </label>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="productName">Número de cuenta</label>
+                    <input type="text" class="form-control" id="" placeholder="" value="">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="productName">Vencimiento (MM/AA)</label>
-                <input type="text" class="form-control" id="" placeholder="" value="">
-              </div>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio-forma-pago" id="exampleRadios2" value="option2">
-              <label class="form-check-label" for="exampleRadios2">
-                Transferencia bancaria
-              </label>
-            </div>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="productName">Número de cuenta</label>
-                <input type="text" class="form-control" id="" placeholder="" value="">
-              </div>
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Cerrar</button>
             </div>
           </div>
         </div>
       </div>
+      <div class="col-4">
+        <!--No queda lindo con un p, cambiarlo-->
+        <p id="forma-pago-selected"></p>
+      </div>
     </div>
-  </div>
   </div>
 
   <div id="spinner-wrapper">
