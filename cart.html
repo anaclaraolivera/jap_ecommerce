@@ -61,6 +61,35 @@
     .espacio-entre-divs {
       margin-bottom: 50px;
     }
+
+    .texto-rojo-validacion {
+      color: red;
+      font-size: small;
+    }
+    .fa-exclamation-triangle 
+    {color: red;}
+
+    #no-dir {
+      visibility: hidden;
+    }
+    #no-num {
+      visibility: hidden;
+    }
+    #no-esq {
+      visibility: hidden;
+    }
+    #no-num-tarj {
+      visibility: hidden;
+    }
+    #no-cod {
+      visibility: hidden;
+    }
+    #no-venc {
+      visibility: hidden;
+    }
+    #no-cuenta {
+      visibility: hidden;
+    }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -141,27 +170,14 @@
           <!--Hay dos td que están sin mostrarse, se muestra una u otra dependiendo del botón que se toque-->
           <td id="total-pago-pesos" style="display: none;"></td>
           <td id="total-pago-dolares" style="display: none;"></td>
+          <!--Texto que aparece cuando no se selecciona moneda, sirve para validar-->
+          <td id= "texto-no-moneda" style="display: none;" class="texto-rojo-validacion"><i class='fas fa-exclamation-triangle'></i>Debes elegir una moneda para seguir</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!--Tipo de envío-->
-  <div class="center-item" style="margin-bottom: 50px;">
-    <h3 class="mb-3">Tipo de envío</h3>
-    <div class="custom-control custom-radio">
-      <input id="goldradio" name="radio-envio" type="radio" class="custom-control-input" checked="" required="">
-      <label class="custom-control-label" for="goldradio">Premium 2 a 5 días (15%)</label>
-    </div>
-    <div class="custom-control custom-radio">
-      <input id="premiumradio" name="radio-envio" type="radio" class="custom-control-input" required="">
-      <label class="custom-control-label" for="premiumradio">Express 5 a 8 días (7%)</label>
-    </div>
-    <div class="custom-control custom-radio">
-      <input id="standardradio" name="radio-envio" type="radio" class="custom-control-input" required="">
-      <label class="custom-control-label" for="standardradio">Standard 12 a 15 días (5%)</label>
-    </div>
-  </div>
+  
 
 
   <!--Dirección-->
@@ -171,25 +187,28 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="productName">Dirección</label>
-        <input type="text" class="form-control" id="" placeholder="" value="">
-        <div class="invalid-feedback">
-          Ingrese una dirección
+        <input type="text" class="form-control" id="direccion-dir">
+        <!--Alerta si no completa-->
+        <div id="no-dir">
+          <i class='fas fa-exclamation-triangle'></i><p class='texto-rojo-validacion'>Debes ingresar una dirección válida</p>
         </div>
       </div>
       <div class="col-md-6 mb-3">
         <label for="productName">Número</label>
-        <input type="text" class="form-control" id="" placeholder="" value="">
-        <div class="invalid-feedback">
-          Ingrese el número de puerta
+        <input type="text" class="form-control" id="numero-dir">
+        <!--Alerta si no completa-->
+        <div id="no-num">
+          <i class='fas fa-exclamation-triangle'></i><p class='texto-rojo-validacion'>Debes ingresar un número válido</p>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="productName">Esquina</label>
-        <input type="text" class="form-control" id="" placeholder="" value="">
-        <div class="invalid-feedback">
-          Ingrese la esquina
+        <input type="text" class="form-control" id="esquina-dir">
+        <!--Alerta si no completa-->
+        <div id="no-esq">
+          <i class='fas fa-exclamation-triangle'></i><p class='texto-rojo-validacion'>Debes ingresar una esquina válida</p>
         </div>
       </div>
     </div>
@@ -201,6 +220,35 @@
     <label>Esquina</label>
     <input type="text"> -->
   </div>
+  <!--Tipo de envío-->
+  <div class="center-item" style="margin-bottom: 50px;">
+    <h3 class="mb-3">Tipo de envío</h3>
+    <input type="radio" id="envio-premium" name="tipo-envio" value="premium" checked="true">
+    <label for="premium">Premium 2 a 5 días (15%)</label> <br>
+    <input type="radio" id="envio-express" name="tipo-envio" value="express">
+    <label for="express">Express 5 a 8 días (7%)</label><br>
+    <input type="radio" id="envio-standard" name="tipo-envio" value="standard">
+    <label for="standard">Standard 12 a 15 días (5%)</label>
+</div>
+
+
+
+  <!-- <div class="center-item" style="margin-bottom: 50px;">
+    <h3 class="mb-3">Tipo de envío</h3>
+    <div class="custom-control custom-radio"  id="envio-premium">
+      <input name="group1" type="radio" class="custom-control-input" checked="true">
+      <label class="custom-control-label" for="premiumradio">Premium 2 a 5 días (15%)</label>
+    </div>
+    <div class="custom-control custom-radio" id="envio-express">
+      <input  name="group1" type="radio" class="custom-control-input">
+      <label class="custom-control-label" for="expressradio">Express 5 a 8 días (7%)</label>
+    </div>
+    <div class="custom-control custom-radio" id="envio-standard">
+      <input  name="group1" type="radio" class="custom-control-input">
+      <label class="custom-control-label" for="standardradio">Standard 12 a 15 días (5%)</label>
+    </div>
+  </div> -->
+
   <!--Costos-->
   <!--Título-->
   <div class="center-item" style="margin-bottom: 50px;">
@@ -249,8 +297,8 @@
               </div>
               <div class="modal-body">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="radio-forma-pago" id="exampleRadios1"
-                    value="option1" checked>
+                  <input class="form-check-input" type="radio" name="radio-forma-pago" id="radio-tarj-credito"
+                    value="option1" checked onclick="tarjetaClick()">
                   <label class="form-check-label" for="exampleRadios1">
                     Tarjeta de crédito
                   </label>
@@ -258,22 +306,34 @@
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <label for="productName">Número de tarjeta</label>
-                    <input type="text" class="form-control" id="" placeholder="" value="">
+                    <input type="text" class="form-control" id="numero-tarj">
+                     <!--Alerta si no completa-->
+        <div id="no-num-tarj">
+          <i class='fas fa-exclamation-triangle'></i><p class='texto-rojo-validacion'>Debes ingresar un número de tarjeta</p>
+        </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="productName">Código de seguridad</label>
-                    <input type="text" class="form-control" id="" placeholder="" value="">
+                    <input type="text" class="form-control" id="codigo-tarj">
+                    <!--Alerta si no completa-->
+        <div id="no-cod">
+          <i class='fas fa-exclamation-triangle'></i><p class='texto-rojo-validacion'>Debes ingresar el código de la tarjeta</p>
+        </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <label for="productName">Vencimiento (MM/AA)</label>
-                    <input type="text" class="form-control" id="" placeholder="" value="">
+                    <input type="text" class="form-control" id="vencimiento-tarj">
+                    <!--Alerta si no completa-->
+        <div id="no-venc">
+          <i class='fas fa-exclamation-triangle'></i><p class='texto-rojo-validacion'>Debes ingresar fecha de vencimiento</p>
+        </div>
                   </div>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="radio-forma-pago" id="exampleRadios2"
-                    value="option2">
+                  <input class="form-check-input" type="radio" name="radio-forma-pago" id="radio-transf"
+                    value="option2" onclick="transferClick()">
                   <label class="form-check-label" for="exampleRadios2">
                     Transferencia bancaria
                   </label>
@@ -281,11 +341,16 @@
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <label for="productName">Número de cuenta</label>
-                    <input type="text" class="form-control" id="" placeholder="" value="">
+                    <input type="text" class="form-control" id="numero-transf" readOnly>
+                     <!--Alerta si no completa-->
+        <div id="no-cuenta">
+          <i class='fas fa-exclamation-triangle'></i><p class='texto-rojo-validacion'>Debes ingresar un número de cuenta</p>
+        </div>
                   </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="guardarMetodoPago()">Guardar</button>
                 </div>
               </div>
             </div>
@@ -294,9 +359,13 @@
       </div>
       <div class="col-4">
         <!--No queda lindo con un p, cambiarlo-->
-        <p id="forma-pago-selected"></p>
+        <p id="forma-pago-tarjeta" style="display: none;">Tarjeta de crédito</p>
+        <p id="forma-pago-transferencia" style="display: none;">Transferencia</p>
       </div>
     </div>
+  </div>
+  <div>
+    <button type="button" class="btn btn-info" onclick="validarCampos()">Finalizar compra</button>
   </div>
 
   <div id="spinner-wrapper">
@@ -312,6 +381,7 @@
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="https://kit.fontawesome.com/88e6758995.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
