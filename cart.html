@@ -139,6 +139,7 @@
           </th>
         </tr>
         <tr>
+          <th></th>
           <th class="alineado" scope="col">Producto</th>
           <th class="alineado" scope="col"></th>
           <th class="alineado" scope="col">Moneda</th>
@@ -157,6 +158,7 @@
           <td></td>
           <td></td>
           <td></td>
+          <td></td>
           <th scope="col">Total a pagar
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-outline-info" id="pesos">
@@ -167,18 +169,17 @@
               </label>
             </div>
           </th>
+          <div>
           <!--Hay dos td que están sin mostrarse, se muestra una u otra dependiendo del botón que se toque-->
           <td id="total-pago-pesos" style="display: none;"></td>
           <td id="total-pago-dolares" style="display: none;"></td>
           <!--Texto que aparece cuando no se selecciona moneda, sirve para validar-->
           <td id= "texto-no-moneda" style="display: none;" class="texto-rojo-validacion"><i class='fas fa-exclamation-triangle'></i>Debes elegir una moneda para seguir</td>
+        </div>
         </tr>
       </tbody>
     </table>
   </div>
-
-  
-
 
   <!--Dirección-->
   <div class="center-item" style="margin-bottom: 50px;">
@@ -187,7 +188,7 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="productName">Dirección</label>
-        <input type="text" class="form-control" id="direccion-dir">
+        <input type="text" class="form-control" id="direccion-dir" onkeyup="onDireccionKeyUp(this.value)">
         <!--Alerta si no completa-->
         <div id="no-dir">
           <i class='fas fa-exclamation-triangle'></i><p class='texto-rojo-validacion'>Debes ingresar una dirección válida</p>
@@ -195,7 +196,7 @@
       </div>
       <div class="col-md-6 mb-3">
         <label for="productName">Número</label>
-        <input type="text" class="form-control" id="numero-dir">
+        <input type="text" class="form-control" id="numero-dir" onkeyup="onNumeroKeyUp(this.value)">
         <!--Alerta si no completa-->
         <div id="no-num">
           <i class='fas fa-exclamation-triangle'></i><p class='texto-rojo-validacion'>Debes ingresar un número válido</p>
@@ -205,7 +206,7 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="productName">Esquina</label>
-        <input type="text" class="form-control" id="esquina-dir">
+        <input type="text" class="form-control" id="esquina-dir" onkeyup="onEsquinaKeyUp(this.value)">
         <!--Alerta si no completa-->
         <div id="no-esq">
           <i class='fas fa-exclamation-triangle'></i><p class='texto-rojo-validacion'>Debes ingresar una esquina válida</p>
@@ -258,14 +259,17 @@
       <tbody>
         <tr>
           <td>Subtotal</td>
+          <td id="mon-subt"></td>
           <td id="costo-subt"></td>
         </tr>
         <tr>
           <td>Costo de envío</td>
+          <td id="mon-costo"></td>
           <td id="costo-envio"></td>
         </tr>
         <tr>
-          <td>Total ($)</td>
+          <td>Total</td>
+          <td id="mon-total"></td>
           <td id="costo-total"></td>
         </tr>
       </tbody>
@@ -306,7 +310,7 @@
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <label for="productName">Número de tarjeta</label>
-                    <input type="text" class="form-control" id="numero-tarj">
+                    <input type="text" class="form-control" id="numero-tarj" onkeyup="onNumTarjKeyUp(this.value)">
                      <!--Alerta si no completa-->
         <div id="no-num-tarj">
           <i class='fas fa-exclamation-triangle'></i><p class='texto-rojo-validacion'>Debes ingresar un número de tarjeta</p>
@@ -314,7 +318,7 @@
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="productName">Código de seguridad</label>
-                    <input type="text" class="form-control" id="codigo-tarj">
+                    <input type="text" class="form-control" id="codigo-tarj" onkeyup="onCodigoKeyUp(this.value)">
                     <!--Alerta si no completa-->
         <div id="no-cod">
           <i class='fas fa-exclamation-triangle'></i><p class='texto-rojo-validacion'>Debes ingresar el código de la tarjeta</p>
@@ -324,7 +328,7 @@
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <label for="productName">Vencimiento (MM/AA)</label>
-                    <input type="text" class="form-control" id="vencimiento-tarj">
+                    <input type="text" class="form-control" id="vencimiento-tarj" onkeyup="onVencKeyUp(this.value)"> 
                     <!--Alerta si no completa-->
         <div id="no-venc">
           <i class='fas fa-exclamation-triangle'></i><p class='texto-rojo-validacion'>Debes ingresar fecha de vencimiento</p>
@@ -341,7 +345,7 @@
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <label for="productName">Número de cuenta</label>
-                    <input type="text" class="form-control" id="numero-transf" readOnly>
+                    <input type="text" class="form-control" id="numero-transf" readOnly onkeyup="onNumCuentaKeyUp(this.value)">
                      <!--Alerta si no completa-->
         <div id="no-cuenta">
           <i class='fas fa-exclamation-triangle'></i><p class='texto-rojo-validacion'>Debes ingresar un número de cuenta</p>
@@ -350,7 +354,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="guardarMetodoPago()">Guardar</button>
+                  <button id="boton-guardar-modal" type="button" class="btn btn-primary" data-dismiss="modal" onclick="guardarMetodoPago()">Guardar</button>
                 </div>
               </div>
             </div>
@@ -364,7 +368,7 @@
       </div>
     </div>
   </div>
-  <div>
+  <div class="center-item" style="margin-bottom: 50px;">
     <button type="button" class="btn btn-info" onclick="validarCampos()">Finalizar compra</button>
   </div>
 
