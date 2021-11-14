@@ -241,6 +241,7 @@ function guardarMetodoPago() {
   if (tarjeta === true && transferencia === false) {
     //Acá muestra "Tarjeta de crédito en pantalla"
     document.getElementById("forma-pago-tarjeta").style.display = "block";
+    document.getElementById("forma-pago-transferencia").style.display = "none";
     if (document.getElementById("numero-tarj").value === "" ||
       document.getElementById("codigo-tarj").value === "" ||
       document.getElementById("vencimiento-tarj").value === "") {
@@ -263,6 +264,7 @@ function guardarMetodoPago() {
   else if (tarjeta === false && transferencia === true) {
     //Acá muestra "Transfe"
     document.getElementById("forma-pago-transferencia").style.display = "block";
+    document.getElementById("forma-pago-tarjeta").style.display = "none";
     if (document.getElementById("numero-transf").value === "") {
       document.getElementById("forma-pago-transferencia").style.display = "none";
       alert("Tienes que llenar todos los campos")
