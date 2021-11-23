@@ -275,7 +275,6 @@ function guardarMetodoPago() {
   }
 }
 
-
 //al clickear ese radio button se deshabilita el input de la transf y se habilitan los de la tarj
 function tarjetaClick() {
   document.getElementById("numero-transf").readOnly = true;
