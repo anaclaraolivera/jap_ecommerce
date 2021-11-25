@@ -7,6 +7,7 @@ let subtotalFinal = 0;
 // let monedaCosto = "";
 // let monedaTotal = "";
 let porcentEnvio = 0.15;
+let msgCompraRealizada = "";
 
 
 const DOLARES = "USD";
@@ -47,7 +48,6 @@ function eliminarArt(value) {
   //Para que se actualice el subtotal al eliminar art
   actualizarSubtotal();
 }
-
 
 function actualizarSubtotal() {
 
@@ -146,11 +146,14 @@ function validarCampos() {
   let esquina = document.getElementById("esquina-dir").value;
   let subPESOSnone = document.getElementById("total-pago-pesos").style.display === "none";
   let subDOLARESnone = document.getElementById("total-pago-dolares").style.display === "none";
+  let tarjetaNone = document.getElementById("forma-pago-tarjeta").style.display = "none";
+  let transferNone =  document.getElementById("forma-pago-transferencia").style.display = "none";
 
+  //Valida los campos de dirección
   if (direccion === "" || numero === "" || esquina === "") {
     alert("Debes llenar los campos de dirección de envío")
     if (direccion === "") {
-      document.getElementById("no-dir").style.visibility = "visible";
+      document.getElementById("no-dir").style.visibility = "visible"; 
     }
     if (numero === "") {
       document.getElementById("no-num").style.visibility = "visible";
@@ -159,21 +162,36 @@ function validarCampos() {
       document.getElementById("no-esq").style.visibility = "visible";
     }
   }
-
+//Valida que no se activen los dos totales a la vez
   if (document.getElementById("total-pago-pesos").style.display === "block") {
     document.getElementById("total-pago-dolares").style.display = "none";
   }
+  //Valida que no se activen los dos totales a la vez
   if (document.getElementById("total-pago-dolares").style.display === "block") {
     document.getElementById("total-pago-pesos").style.display = "none";
   } 
+  //Valida que haya alguna moneda ingresada
   if (subPESOSnone && subDOLARESnone) {
     document.getElementById("texto-no-moneda").style.display = "block";
     alert("Debes elegir una moneda para continuar");
   }
-  
+  //Valida que haya al menos un artículo en el carrito
   if (allArticles.length === 0) {
     alert("No hay ningún artículo en el carrito");
   }
+//FUNCIONA MAL cuando doy click al botón finalizar compra y seleccione una sigue diciendo el alert
+// y además se borra el que seleccioné :(
+  if (tarjetaNone && transferNone) {
+alert ("Debes seleccionar una forma de pago")
+
+  }
+//Muestra el mensaje compra realizada con éxito
+ if (direccion !== "" && numero !== "" && esquina !== ""  && (!subPESOSnone || !subDOLARESnone) && (!tarjetaNone && !transferNone)) {
+   //Pega el mensaje que viene del json al html
+   document.getElementById("mensaje-compra-exito").innerHTML = msgCompraRealizada;
+   //Hace que el popup aparezca solamente si se validaron los campos
+document.getElementById("popup1").style.display ="block";
+ }
 }
 
 function onDireccionKeyUp(value) {
@@ -313,6 +331,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
     calcularSubtotal();
 
   });
+
+  //Traigo el mensaje de compra realizada con éxito
+getJSONData(CART_BUY_URL).then(function (mensaje) {
+  if (mensaje.status === "ok") {
+    console.log(mensaje.data.msg)
+    msgCompraRealizada = mensaje.data.msg;
+    console.log("mensajeGLOBAL" + msgCompraRealizada);
+  }
+
+});
   document.getElementById("pesos").addEventListener("click", function () {
     selectCurrency(PESOS);
   });
