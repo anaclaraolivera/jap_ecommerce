@@ -29,67 +29,6 @@
         font-size: 3.5rem;
       }
     }
-
-    .center-item {
-      margin-left: auto;
-      margin-right: auto;
-      width: 60%;
-
-    }
-
-    .espacio-columnas>td {
-      padding-bottom: 1em;
-      padding-left: 2em;
-      padding-right: 2em;
-    }
-
-    .alineado {
-      text-align: center
-    }
-
-    .container {
-      display: flex;
-      align-items: center;
-      justify-content: center
-    }
-
-    .text {
-      font-size: 20px;
-      padding-left: 20px;
-    }
-
-    .espacio-entre-divs {
-      margin-bottom: 50px;
-    }
-
-    .texto-rojo-validacion {
-      color: red;
-      font-size: small;
-    }
-    .fa-exclamation-triangle 
-    {color: red;}
-
-    #no-dir {
-      visibility: hidden;
-    }
-    #no-num {
-      visibility: hidden;
-    }
-    #no-esq {
-      visibility: hidden;
-    }
-    #no-num-tarj {
-      visibility: hidden;
-    }
-    #no-cod {
-      visibility: hidden;
-    }
-    #no-venc {
-      visibility: hidden;
-    }
-    #no-cuenta {
-      visibility: hidden;
-    }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -368,9 +307,24 @@
       </div>
     </div>
   </div>
-  <div class="center-item" style="margin-bottom: 50px;">
+  <!--Botón finalizar compra-->
+  <!-- <div class="center-item" style="margin-bottom: 50px;">
     <button type="button" class="btn btn-info" onclick="validarCampos()">Finalizar compra</button>
-  </div>
+  </div> -->
+<!--Botón nuevo con popup-->
+
+<div class="box">
+	<a class="button" href="#popup1"onclick="validarCampos()">Finalizar compra</a>
+</div>
+<!--POPUP https://codepen.io/imprakash/pen/GgNMXO-->
+
+<div id="popup1" class="overlay" style="display: none;">
+	<div class="popup">
+		<a class="close" href="#">&times;</a>
+		<div class="content" id="mensaje-compra-exito">
+		</div>
+	</div>
+</div>
 
   <div id="spinner-wrapper">
     <div class="lds-ring">
