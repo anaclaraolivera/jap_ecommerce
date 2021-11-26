@@ -185,7 +185,7 @@ function validarCampos() {
 alert ("Debes seleccionar una forma de pago")
 
   }
-//Muestra el mensaje compra realizada con éxito
+//Muestra el mensaje compra realizada con exito
  if (direccion !== "" && numero !== "" && esquina !== ""  && (!subPESOSnone || !subDOLARESnone) && (!tarjetaNone && !transferNone)) {
    //Pega el mensaje que viene del json al html
    document.getElementById("mensaje-compra-exito").innerHTML = msgCompraRealizada;
@@ -256,6 +256,8 @@ function onNumCuentaKeyUp(value) {
 function guardarMetodoPago() {
   let tarjeta = document.getElementById("radio-tarj-credito").checked;
   let transferencia = document.getElementById("radio-transf").checked;
+  let transfNone= document.getElementById("forma-pago-transferencia").style.display = "none";
+  let tarjNone = document.getElementById("forma-pago-tarjeta").style.display = "none";
   if (tarjeta === true && transferencia === false) {
     //Acá muestra "Tarjeta de crédito en pantalla"
     document.getElementById("forma-pago-tarjeta").style.display = "block";
@@ -290,6 +292,12 @@ function guardarMetodoPago() {
     if (document.getElementById("numero-transf").value === "") {
       document.getElementById("no-cuenta").style.visibility = "visible";
     }
+  }
+  //CREO QUE ESTO ES UN PROBLEMA 
+  if (tarjNone && transfNone) {
+    document.getElementById("forma-pago-transferencia").style.display = "none";
+    document.getElementById("forma-pago-tarjeta").style.display = "none";
+    document.getElementById("no-forma-pago").style.visibility="visible";
   }
 }
 
