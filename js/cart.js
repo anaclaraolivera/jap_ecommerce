@@ -294,7 +294,7 @@ function guardarMetodoPago() {
     }
   }
   //CREO QUE ESTO ES UN PROBLEMA 
-  //¿puedo hacer que ninguno este checked? así sería más sencillo
+  //¿puedo hacer que ninguno este checked? así sería más sencillo CREO QUE NO
   if (tarjNone && transfNone) {
     document.getElementById("forma-pago-transferencia").style.display = "none";
     document.getElementById("forma-pago-tarjeta").style.display = "none";
