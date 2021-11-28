@@ -9,6 +9,9 @@ let subtotalFinal = 0;
 let porcentEnvio = 0.15;
 let msgCompraRealizada = "";
 
+let formaPagoTarjeta = false;
+let formaPagoTransferencia = false;
+
 
 const DOLARES = "USD";
 const PESOS = "UYU";
@@ -146,14 +149,12 @@ function validarCampos() {
   let esquina = document.getElementById("esquina-dir").value;
   let subPESOSnone = document.getElementById("total-pago-pesos").style.display === "none";
   let subDOLARESnone = document.getElementById("total-pago-dolares").style.display === "none";
-  let tarjetaNone = document.getElementById("forma-pago-tarjeta").style.display = "none";
-  let transferNone =  document.getElementById("forma-pago-transferencia").style.display = "none";
-
+  
   //Valida los campos de dirección
   if (direccion === "" || numero === "" || esquina === "") {
     alert("Debes llenar los campos de dirección de envío")
     if (direccion === "") {
-      document.getElementById("no-dir").style.visibility = "visible"; 
+      document.getElementById("no-dir").style.visibility = "visible";
     }
     if (numero === "") {
       document.getElementById("no-num").style.visibility = "visible";
@@ -162,14 +163,14 @@ function validarCampos() {
       document.getElementById("no-esq").style.visibility = "visible";
     }
   }
-//Valida que no se activen los dos totales a la vez
+  //Valida que no se activen los dos totales a la vez
   if (document.getElementById("total-pago-pesos").style.display === "block") {
     document.getElementById("total-pago-dolares").style.display = "none";
   }
   //Valida que no se activen los dos totales a la vez
   if (document.getElementById("total-pago-dolares").style.display === "block") {
     document.getElementById("total-pago-pesos").style.display = "none";
-  } 
+  }
   //Valida que haya alguna moneda ingresada
   if (subPESOSnone && subDOLARESnone) {
     document.getElementById("texto-no-moneda").style.display = "block";
@@ -179,28 +180,29 @@ function validarCampos() {
   if (allArticles.length === 0) {
     alert("No hay ningún artículo en el carrito");
   }
-//FUNCIONA MAL cuando doy click al botón finalizar compra y seleccione una sigue diciendo el alert
-// y además se borra el que seleccioné :(
-  if (tarjetaNone && transferNone) {
-alert ("Debes seleccionar una forma de pago")
-
+  //Alert si no seleccionó forma de pago
+  if (!formaPagoTransferencia && !formaPagoTarjeta) {
+    console.log("tarj" + formaPagoTarjeta);
+    console.log("transf" + formaPagoTransferencia);
+    alert("Debes seleccionar una forma de pago")
   }
-//Muestra el mensaje compra realizada con exito
- if (direccion !== "" && numero !== "" && esquina !== ""  && (!subPESOSnone || !subDOLARESnone) && (!tarjetaNone && !transferNone)) {
-   //Pega el mensaje que viene del json al html
-   document.getElementById("mensaje-compra-exito").innerHTML = msgCompraRealizada;
-   //Hace que el popup aparezca solamente si se validaron los campos
-document.getElementById("popup1").style.display ="block";
- }
+  //Muestra el mensaje compra realizada con exito
+  if (direccion !== "" && numero !== "" && esquina !== "" && (!subPESOSnone || !subDOLARESnone) && (formaPagoTarjeta || formaPagoTransferencia)) {
+    //Pega el mensaje que viene del json al html
+    document.getElementById("mensaje-compra-exito").innerHTML = msgCompraRealizada;
+    //Hace que el popup aparezca solamente si se validaron los campos
+    document.getElementById("popup1").style.display = "block";
+  }
 }
 
 function onDireccionKeyUp(value) {
-if (value.length > 0) {
-  document.getElementById("no-dir").style.visibility = "hidden";
-}
-else {
-  document.getElementById("no-dir").style.visibility = "visible";
-}
+  if (value.length > 0) {
+    document.getElementById("no-dir").style.visibility = "hidden";
+  }
+  else {
+    document.getElementById("no-dir").style.visibility = "visible";
+
+  }
 }
 function onNumeroKeyUp(value) {
   if (value.length > 0) {
@@ -253,124 +255,206 @@ function onNumCuentaKeyUp(value) {
 
 // Función que se fija cuál es el método de pago seleccionado y muestra en pantalla 
 //Además se cerciora de que haya ingresado datos dentro del método de pago seleccionado antes de dar guardar
+// function guardarMetodoPago() {
+//   let tarjeta = document.getElementById("radio-tarj-credito").checked;
+//   let transferencia = document.getElementById("radio-transf").checked;
+//   let transfNone= document.getElementById("forma-pago-transferencia").style.display === "none";
+//   let tarjNone = document.getElementById("forma-pago-tarjeta").style.display === "none";
+// console.log("tarjeta checked" + tarjeta);
+// console.log("transf checked" + transferencia);
+// console.log("transf none" + transfNone);
+// console.log("tarj none" + tarjNone);
+
+//   if (tarjeta && !transferencia) {
+//     //Acá muestra "Tarjeta de crédito en pantalla"
+//     console.log("tarjeta true y transf false");
+//     // document.getElementById("no-forma-pago").style.visibility="hidden";
+//     document.getElementById("forma-pago-tarjeta").style.display = "block";
+//     document.getElementById("forma-pago-transferencia").style.display = "none";
+//     if (document.getElementById("numero-tarj").value === "" ||
+//       document.getElementById("codigo-tarj").value === "" ||
+//       document.getElementById("vencimiento-tarj").value === "") {
+//       document.getElementById("forma-pago-tarjeta").style.display = "none";
+
+
+//       // document.getElementById("boton-guardar-modal").disabled = true;
+
+//     }
+//     if (document.getElementById("numero-tarj").value === "") {
+//       document.getElementById("no-num-tarj").style.visibility = "visible";
+//     }
+//     if (document.getElementById("codigo-tarj").value === "") {
+//       document.getElementById("no-cod").style.visibility = "visible";
+//     }
+//     if (document.getElementById("vencimiento-tarj").value === "") {
+//       document.getElementById("no-venc").style.visibility = "visible";
+//     }
+//   }
+//   else if (!tarjeta && transferencia) {
+//     //Acá muestra "Transfe"
+//     document.getElementById("forma-pago-transferencia").style.display = "block";
+//     document.getElementById("forma-pago-tarjeta").style.display = "none";
+//     if (document.getElementById("numero-transf").value === "") {
+//       document.getElementById("forma-pago-transferencia").style.display = "none";
+//       alert("Tienes que llenar todos los campos")
+//     }
+//     if (document.getElementById("numero-transf").value === "") {
+//       document.getElementById("no-cuenta").style.visibility = "visible";
+//     }
+//   }
+//   //CREO QUE ESTO ES UN PROBLEMA 
+//   //¿puedo hacer que ninguno este checked? así sería más sencillo CREO QUE NO
+//   if (tarjNone && transfNone) {
+//     console.log(tarjNone + "tarjnone");
+//     console.log(transfNone + "trasnfnone");
+//     // document.getElementById("forma-pago-transferencia").style.display = "none";
+//     // document.getElementById("forma-pago-tarjeta").style.display = "none";
+//     
+//   }
+// }
+
+
+
 function guardarMetodoPago() {
   let tarjeta = document.getElementById("radio-tarj-credito").checked;
   let transferencia = document.getElementById("radio-transf").checked;
-  let transfNone= document.getElementById("forma-pago-transferencia").style.display = "none";
-  let tarjNone = document.getElementById("forma-pago-tarjeta").style.display = "none";
-  if (tarjeta === true && transferencia === false) {
-    //Acá muestra "Tarjeta de crédito en pantalla"
+//Setea valores a las variables globales true tarjeta
+  if (tarjeta && document.getElementById("numero-tarj").value.length > 0 && document.getElementById("codigo-tarj").value.length > 0 && document.getElementById("vencimiento-tarj").value.length > 0) {
+    formaPagoTarjeta = true
+    formaPagoTransferencia = false
+    console.log("sos true?" +formaPagoTarjeta);
+  }
+//Setea valores a las variables globales true transferencia
+  if (transferencia && document.getElementById("numero-transf").value.length > 0) {
+    formaPagoTransferencia = true
+    formaPagoTarjeta = false
+    console.log("sos true??" + formaPagoTransferencia);
+  }
+//Entra dentro de este if si se seleccionó a la tarjeta 
+  if (tarjeta && !transferencia) {
+//deja visible en pantalla la forma de pago seleccionada - tarjeta - 
     document.getElementById("forma-pago-tarjeta").style.display = "block";
-    document.getElementById("forma-pago-transferencia").style.display = "none";
-    if (document.getElementById("numero-tarj").value === "" ||
-      document.getElementById("codigo-tarj").value === "" ||
-      document.getElementById("vencimiento-tarj").value === "") {
-      document.getElementById("forma-pago-tarjeta").style.display = "none";
+    //Si no llenó los campos de tarjeta no muestra nada 
+  if (document.getElementById("numero-tarj").value === "" ||
+  document.getElementById("codigo-tarj").value === "" ||
+  document.getElementById("vencimiento-tarj").value === "") {
+  document.getElementById("forma-pago-tarjeta").style.display = "none";
+  document.getElementById("forma-pago-transferencia").style.display = "none";
+}
+if (document.getElementById("numero-tarj").value === "") {
+  document.getElementById("no-num-tarj").style.visibility = "visible";
+}
+if (document.getElementById("codigo-tarj").value === "") {
+  document.getElementById("no-cod").style.visibility = "visible";
+}
+if (document.getElementById("vencimiento-tarj").value === "") {
+  document.getElementById("no-venc").style.visibility = "visible";
+}
+  }
 
-      
-      // document.getElementById("boton-guardar-modal").disabled = true;
-      
+//Entra en este if si seleccionó transferencia
+    if (transferencia && !tarjeta) {
+    //deja visible en pantalla la forma de pago seleccionada - transferencia - 
+      document.getElementById("forma-pago-transferencia").style.display = "block";
+    //si no ingresó nada, no muestra la forma de pago 
+      if (document.getElementById("numero-transf").value === "") {
+        document.getElementById("forma-pago-transferencia").style.display = "none";
+        document.getElementById("forma-pago-tarjeta").style.display = "none";
+        }
+        if (document.getElementById("numero-transf").value === "") {
+          document.getElementById("no-cuenta").style.visibility = "visible";
     }
-    if (document.getElementById("numero-tarj").value === "") {
-      document.getElementById("no-num-tarj").style.visibility = "visible";
-    }
-    if (document.getElementById("codigo-tarj").value === "") {
-      document.getElementById("no-cod").style.visibility = "visible";
-    }
-    if (document.getElementById("vencimiento-tarj").value === "") {
-      document.getElementById("no-venc").style.visibility = "visible";
-    }
-  }
-  else if (tarjeta === false && transferencia === true) {
-    //Acá muestra "Transfe"
-    document.getElementById("forma-pago-transferencia").style.display = "block";
-    document.getElementById("forma-pago-tarjeta").style.display = "none";
-    if (document.getElementById("numero-transf").value === "") {
-      document.getElementById("forma-pago-transferencia").style.display = "none";
-      alert("Tienes que llenar todos los campos")
-    }
-    if (document.getElementById("numero-transf").value === "") {
-      document.getElementById("no-cuenta").style.visibility = "visible";
-    }
-  }
-  //CREO QUE ESTO ES UN PROBLEMA 
-  //¿puedo hacer que ninguno este checked? así sería más sencillo CREO QUE NO
-  if (tarjNone && transfNone) {
-    document.getElementById("forma-pago-transferencia").style.display = "none";
-    document.getElementById("forma-pago-tarjeta").style.display = "none";
-    document.getElementById("no-forma-pago").style.visibility="visible";
-  }
+    
 }
 
-//al clickear ese radio button se deshabilita el input de la transf y se habilitan los de la tarj
-function tarjetaClick() {
-  document.getElementById("numero-transf").readOnly = true;
-  document.getElementById("numero-tarj").readOnly = false;
-  document.getElementById("codigo-tarj").readOnly = false;
-  document.getElementById("vencimiento-tarj").readOnly = false;
-  //acá se asegura de limpiar los campos del otro lugar
-  document.getElementById('numero-transf').value = '';
-  document.getElementById("no-cuenta").style.visibility = "hidden";
+if (!formaPagoTarjeta) {
+  document.getElementById("no-forma-pago").style.visibility="visible";
+}
+
+if (!formaPagoTransferencia) {
+  document.getElementById("no-forma-pago").style.visibility="visible";
+}
+
+if (formaPagoTransferencia) {
+  console.log("cuando seleccione transferencia")
+  document.getElementById("no-forma-pago").style.visibility="hidden";
+}
+
+if (formaPagoTarjeta) {
+  document.getElementById("no-forma-pago").style.visibility="hidden";
+}
 
 }
-//al clickear este se deshabilitan los input de la tarj y se habilitan los de la trasnf
-function transferClick() {
-  document.getElementById("numero-tarj").readOnly = true;
-  document.getElementById("codigo-tarj").readOnly = true;
-  document.getElementById("vencimiento-tarj").readOnly = true;
-  document.getElementById("numero-transf").readOnly = false;
-  //acá se asegura de limpiar los campos del otro lugar
-  document.getElementById('numero-tarj').value = '';
-  document.getElementById('codigo-tarj').value = '';
-  document.getElementById('vencimiento-tarj').value = '';
-  document.getElementById("no-num-tarj").style.visibility = "hidden";
-  document.getElementById("no-cod").style.visibility = "hidden";
-  document.getElementById("no-venc").style.visibility = "hidden";
-}
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function (e) {
-  //Desafiate 5, el json tiene dos artículos 
-  getJSONData(CART_2PROD_INFO).then(function (jsonCarrito) {
-    if (jsonCarrito.status === "ok") {
-      allArticles = jsonCarrito.data.articles;
-    }
-    showCarrito();
-    calcularSubtotal();
 
-  });
+  //al clickear ese radio button se deshabilita el input de la transf y se habilitan los de la tarj
+  function tarjetaClick() {
+    document.getElementById("numero-transf").readOnly = true;
+    document.getElementById("numero-tarj").readOnly = false;
+    document.getElementById("codigo-tarj").readOnly = false;
+    document.getElementById("vencimiento-tarj").readOnly = false;
+    //acá se asegura de limpiar los campos del otro lugar
+    document.getElementById('numero-transf').value = '';
+    document.getElementById("no-cuenta").style.visibility = "hidden";
 
-  //Traigo el mensaje de compra realizada con éxito
-getJSONData(CART_BUY_URL).then(function (mensaje) {
-  if (mensaje.status === "ok") {
-    console.log(mensaje.data.msg)
-    msgCompraRealizada = mensaje.data.msg;
-    console.log("mensajeGLOBAL" + msgCompraRealizada);
   }
+  //al clickear este se deshabilitan los input de la tarj y se habilitan los de la trasnf
+  function transferClick() {
+    document.getElementById("numero-tarj").readOnly = true;
+    document.getElementById("codigo-tarj").readOnly = true;
+    document.getElementById("vencimiento-tarj").readOnly = true;
+    document.getElementById("numero-transf").readOnly = false;
+    //acá se asegura de limpiar los campos del otro lugar
+    document.getElementById('numero-tarj').value = '';
+    document.getElementById('codigo-tarj').value = '';
+    document.getElementById('vencimiento-tarj').value = '';
+    document.getElementById("no-num-tarj").style.visibility = "hidden";
+    document.getElementById("no-cod").style.visibility = "hidden";
+    document.getElementById("no-venc").style.visibility = "hidden";
+  }
+  //Función que se ejecuta una vez que se haya lanzado el evento de
+  //que el documento se encuentra cargado, es decir, se encuentran todos los
+  //elementos HTML presentes.
+  document.addEventListener("DOMContentLoaded", function (e) {
+    //Desafiate 5, el json tiene dos artículos 
+    getJSONData(CART_2PROD_INFO).then(function (jsonCarrito) {
+      if (jsonCarrito.status === "ok") {
+        allArticles = jsonCarrito.data.articles;
+      }
+      showCarrito();
+      calcularSubtotal();
 
-});
-  document.getElementById("pesos").addEventListener("click", function () {
-    selectCurrency(PESOS);
-  });
-  document.getElementById("dólares").addEventListener("click", function () {
-    selectCurrency(DOLARES);
-  });
-  //Botones radio para elegir el tipo de envio 
-  document.getElementById("envio-premium").addEventListener("change", function () {
-    porcentEnvio = 0.15;
-    actualizarCostos();
-  });
+    });
 
-  document.getElementById("envio-express").addEventListener("change", function () {
-    porcentEnvio = 0.07;
-    actualizarCostos();
-  });
+    //Traigo el mensaje de compra realizada con éxito
+    getJSONData(CART_BUY_URL).then(function (mensaje) {
+      if (mensaje.status === "ok") {
+        console.log(mensaje.data.msg)
+        msgCompraRealizada = mensaje.data.msg;
+        console.log("mensajeGLOBAL" + msgCompraRealizada);
+      }
 
-  document.getElementById("envio-standard").addEventListener("change", function () {
-    porcentEnvio = 0.05;
-    actualizarCostos();
-  });
+    });
+    document.getElementById("pesos").addEventListener("click", function () {
+      selectCurrency(PESOS);
+    });
+    document.getElementById("dólares").addEventListener("click", function () {
+      selectCurrency(DOLARES);
+    });
+    //Botones radio para elegir el tipo de envio 
+    document.getElementById("envio-premium").addEventListener("change", function () {
+      porcentEnvio = 0.15;
+      actualizarCostos();
+    });
 
-});
+    document.getElementById("envio-express").addEventListener("change", function () {
+      porcentEnvio = 0.07;
+      actualizarCostos();
+    });
+
+    document.getElementById("envio-standard").addEventListener("change", function () {
+      porcentEnvio = 0.05;
+      actualizarCostos();
+    });
+
+  });
 
