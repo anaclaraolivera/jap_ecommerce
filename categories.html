@@ -17,30 +17,22 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">E-commerce</a>
-    <!-- <div class="container d-flex flex-column flex-md-row justify-content-between"> -->
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-       <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="afterIndex.html">Inicio</a>
-          <a class="nav-item nav-link" href="categories.html">Categorías</a>
-          <a class="nav-item nav-link" href="products.html">Productos</a>
-          <a class="nav-item nav-link" href="sell.html">Vender</a>
-          <!-- Usuario -->
-      <div class=" nav-item nav-link 
-      ropdown">
-        <button class="dropbtn" id="username"></button>
+  <nav class="site-header sticky-top py-1 bg-dark">
+    <div class="container d-flex flex-column flex-md-row justify-content-between">
+      <a class="py-2 d-none d-md-inline-block" href="afterIndex.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+      <!-- Usuario -->
+      <div class="dropdown">
+        <button class="dropbtn" id= "username"></button>
         <div class="dropdown-content">
           <a href="cart.html">Ver mi carrito</a>
-          <a href="my-profile.html">Mi perfil</a>
+          <a href="#">Mi perfil</a>
           <!--Al hacer click se llama a la función que limpia el local storage y redirige al login-->
           <a href="#" onclick="cerrarSesion()">Cerrar sesión</a>
         </div>
       </div>
-    </div>
     </div>
   </nav>
   <main role="main" class="pb-5">
